@@ -1,6 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
-  let time = 0;
+  const urlParams = new URLSearchParams(window.location.search);
+  let varTimesBlow = Number(urlParams.get("timesblow")) || 3;
+  let varAudioProcessor = Number(urlParams.get("audioprocessor")) || 120;
+  let varDurationConfetti = Number(urlParams.get("durationconfetti")) || 5;
+
+  let times = 0;
   let process = false;
+  var info = document.getElementById("info");
+
   const canvas = document.getElementById("candleCanvas");
   const canvas2 = document.getElementById("candleCanvas2");
   const canvas3 = document.getElementById("candleCanvas3");
@@ -19,24 +26,6 @@ document.addEventListener("DOMContentLoaded", () => {
     flameHeight: 50,
     flameIntensity: 1.5,
   };
-
-  /*       const candle2 = {
-           x: canvas2.width / 2 - 20,
-           y: canvas2.height - 300,
-           width: 40,
-           height: 300,
-           flameHeight: 50,
-           flameIntensity: 0.5,
-         };
-         
-         const candle3 = {
-           x: canvas3.width / 2 - 20,
-           y: canvas3.height - 300,
-           width: 40,
-           height: 300,
-           flameHeight: 50,
-           flameIntensity: 0.5,
-         }; */
 
   navigator.mediaDevices
     .getUserMedia({ audio: true })
@@ -57,16 +46,17 @@ document.addEventListener("DOMContentLoaded", () => {
         const arraySum = array.reduce((a, value) => a + value, 0);
         const average = arraySum / array.length;
 
-        if (average >= 136 && !process) {
+        if (average >= varAudioProcessor && !process) {
+          info.innerHTML += Math.round(average) + " ";
+
           process = true;
           setTimeout(() => {
-            time += 1;
+            times += 1;
             process = false;
-            if (time >= 3) {
-              var duration = 5 * 1000;
+            if (times >= varTimesBlow) {
+              var duration = varDurationConfetti * 1000;
               var end = Date.now() + duration;
               (function frame() {
-                // launch a few confetti from the left edge
                 confetti({
                   particleCount: 5,
                   angle: 60,
@@ -91,8 +81,8 @@ document.addEventListener("DOMContentLoaded", () => {
               setTimeout(() => {
                 var myAudio = document.getElementById("myAudio");
                 myAudio.play();
-                time = 0;
-              }, 5000);
+                times = 0;
+              }, varDurationConfetti * 1000);
             }
           }, 1000);
         }

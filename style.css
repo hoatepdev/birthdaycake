@@ -28,6 +28,12 @@ body {
   font-size: 20px;
 }
 
+.info {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
 .cake {
   width: 100%;
   position: absolute;
