@@ -57,12 +57,12 @@ document.addEventListener("DOMContentLoaded", () => {
         const arraySum = array.reduce((a, value) => a + value, 0);
         const average = arraySum / array.length;
 
-        if (average > 136 && !process) {
+        if (average >= 136 && !process) {
           process = true;
           setTimeout(() => {
             time += 1;
             process = false;
-            if (time >= 5) {
+            if (time >= 3) {
               var duration = 5 * 1000;
               var end = Date.now() + duration;
               (function frame() {

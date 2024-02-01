@@ -13,8 +13,8 @@ body {
   height: 465px;
   background-color: #ffffff;
   position: absolute;
-  transform: translate(-50%, -50%);
-  top: 200%;
+  transform: translate(-50%, -60%);
+  top: 60%;
   left: 50%;
   border-radius: 8px;
   box-shadow: 0 20px 45px rgba(120, 76, 10, 0.25);
@@ -23,7 +23,7 @@ body {
 .title {
   width: 100%;
   position: absolute;
-  bottom: 4px;
+  bottom: 10px;
   text-align: center;
   font-size: 20px;
 }
