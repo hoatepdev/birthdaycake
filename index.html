@@ -2,11 +2,10 @@
 <html lang="en">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Diệp béoo &nbsp;🎉</title>
+    <title>HPBD &nbsp;🎉</title>
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="stylesheet" href="style.css" />
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
-    <script src="script.js"></script>
   </head>
   <body>
     <audio id="myAudio">
@@ -39,7 +38,69 @@
         <div class="bottom-layer"></div>
       </div>
 
-      <div class="title">Happy birthday Bitch Diệp :&apos;<</div>
+      <div class="title">
+        Happy birthday
+        <span id="name"></span>
+        :&apos;<
+      </div>
     </div>
+
+    <div id="popupOverlay" class="overlay-container">
+      <div class="popup-box">
+        <h2 style="color: green">Form information</h2>
+        <form class="form-container" id="popupForm">
+          <label class="form-label" for="name">Name:</label>
+          <input
+            class="form-input"
+            type="text"
+            placeholder="Enter name"
+            id="name"
+            name="name"
+            required
+          />
+
+          <label class="form-label" for="timesblow">Times blow:</label>
+          <input
+            class="form-input"
+            type="text"
+            placeholder="Enter times blow"
+            id="timesblow"
+            name="timesblow"
+            value="3"
+            required
+          />
+
+          <label class="form-label" for="audioprocessor"
+            >Audio processor:</label
+          >
+          <input
+            class="form-input"
+            type="text"
+            placeholder="Enter audio processor"
+            id="audioprocessor"
+            name="audioprocessor"
+            value="120"
+            required
+          />
+
+          <label class="form-label" for="durationconfetti"
+            >Duration confetti:</label
+          >
+          <input
+            class="form-input"
+            type="text"
+            placeholder="Enter duration confetti (s)"
+            id="durationconfetti"
+            name="durationconfetti"
+            value="5"
+            required
+          />
+
+          <button class="btn-submit" type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
   </body>
 </html>

@@ -152,3 +152,39 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("Error accessing microphone:", err);
     });
 });
+
+function togglePopup() {
+  const overlay = document.getElementById("popupOverlay");
+  overlay.classList.toggle("show");
+}
+
+window.onload = function () {
+  //dom not only ready, but everything is loaded
+
+  let params = new URLSearchParams(window.location.search);
+  if (!params.get("name")) togglePopup();
+  else {
+    document.title = params.get("name") || "HPBD";
+    document.getElementById("name").innerHTML = params.get("name");
+  }
+};
+
+document
+  .getElementById("popupOverlay")
+  .addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    var formData = new FormData(document.getElementById("popupForm"));
+    // output as an object
+    console.log(Object.fromEntries(formData));
+
+    let params = new URLSearchParams(window.location.search);
+
+    // ...or iterate through the name-value pairs
+    for (var pair of formData.entries()) {
+      console.log(pair[0] + ": " + pair[1]);
+      params.set(pair[0], pair[1]);
+    }
+
+    window.location.search = params.toString();
+  });
