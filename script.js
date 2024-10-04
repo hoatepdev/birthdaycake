@@ -1,3 +1,14 @@
+window.onload = function () {
+  let params = new URLSearchParams(window.location.search);
+  if (!params.get("name")) {
+    const overlay = document.getElementById("popupOverlay");
+    overlay.classList.toggle("show");
+  } else {
+    document.title = params.get("name") || "HPBD";
+    document.getElementById("name").innerHTML = params.get("name");
+  }
+};
+
 document.addEventListener("DOMContentLoaded", () => {
   const urlParams = new URLSearchParams(window.location.search);
   let varTimesBlow = Number(urlParams.get("timesblow")) || 3;
@@ -152,22 +163,6 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("Error accessing microphone:", err);
     });
 });
-
-function togglePopup() {
-  const overlay = document.getElementById("popupOverlay");
-  overlay.classList.toggle("show");
-}
-
-window.onload = function () {
-  //dom not only ready, but everything is loaded
-
-  let params = new URLSearchParams(window.location.search);
-  if (!params.get("name")) togglePopup();
-  else {
-    document.title = params.get("name") || "HPBD";
-    document.getElementById("name").innerHTML = params.get("name");
-  }
-};
 
 document
   .getElementById("popupOverlay")

@@ -8,16 +8,24 @@
 body {
   background-color: #eac285;
 }
+
 .container {
-  width: 465px;
+  max-width: 465px;
+  width: 90%;
   height: 465px;
-  background-color: #ffffff;
+  margin: 0 auto;
   position: absolute;
+  background-color: #ffffff;
   transform: translate(-50%, -60%);
   top: 60%;
   left: 50%;
   border-radius: 8px;
   box-shadow: 0 20px 45px rgba(120, 76, 10, 0.25);
+}
+
+.inner {
+  height: 100%;
+  width: 100%;
 }
 
 .title {
